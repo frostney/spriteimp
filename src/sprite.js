@@ -4,10 +4,19 @@
     
     var Sprite = function() {
       this.angle = 0.0;
+      this.frame = {
+        current: 0,
+        width: 0,
+        height: 0
+      };
     };
     
     Sprite.prototype.rotate = function(delta) {
       this.angle += delta;
+    };
+    
+    Sprite.prototype.animate = function() {
+      
     };
     
     return Sprite;
