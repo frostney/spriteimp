@@ -12,3 +12,5 @@ Planned features:
 * Pixel collision
 * Frame animations
 * Tweening?
+
+SpriteImp will be bundled as a part of Lyria, but can be used without it as well.
