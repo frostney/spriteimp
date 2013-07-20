@@ -1,12 +1,13 @@
 module.exports = function(grunt) {
 
+  var udefine = 'udefine/**/*.js';
   var sourceOrigin = 'src/**/*.js';
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
       dist: {
-        src: [sourceOrigin],
+        src: [udefine, sourceOrigin],
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
