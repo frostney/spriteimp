@@ -1,5 +1,4 @@
-(function(root) {
-  
+udefine('imp/texture', ['imp'], function(imp) {
   var Texture = (function() {
     
     var Texture = function() {};
@@ -8,13 +7,7 @@
     
   })();
   
-  if (typeof root.define === 'function') {
-    define('imp/texture', function() {
-      return Texture;
-    });
-  } else {
-    root.Imp = root.Imp || {};
-    root.Imp.Texture = Texture;
-  }
+  imp.Texture = Texture;
   
-})(this);
+  return Texture;
+});

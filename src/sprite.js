@@ -1,66 +1,44 @@
-(function(root) {
+udefine('imp/sprite', ['jquery', 'imp'], function($, imp) {
+  var Sprite = (function() {
 
-  var factory = function(root, $) {
-    var Sprite = (function() {
-
-      var Sprite = function() {
-        this.angle = 0.0;
-        this.frame = {
-          current: 0,
-          width: 0,
-          height: 0
-        };
-
-        //Should be Object.defineProperty...
-        this.position = {
-          x: 0,
-          y: 0
-        };
-        
-        Object.defineProperty(this, 'x', {
-          
-        });
-
-        this.$element = $('div');
+    var Sprite = function() {
+      this.angle = 0.0;
+      this.frame = {
+        current: 0,
+        width: 0,
+        height: 0
       };
 
-      Sprite.prototype.updateElement = function() {
-        this.$element.css('transform', 'tranlateX(' + this.position.x + ') translateY(' + this.position.y + ') translateZ(0)');
+      //Should be Object.defineProperty...
+      this.position = {
+        x: 0,
+        y: 0
       };
 
-      Sprite.prototype.rotate = function(delta) {
-        this.angle += delta;
-      };
+      Object.defineProperty(this, 'x', {
 
-      Sprite.prototype.animate = function(property, target, easing, callback) {
+      });
 
-      };
+      this.$element = $('div');
+    };
 
-      return Sprite;
+    Sprite.prototype.updateElement = function() {
+      this.$element.css('transform', 'tranlateX(' + this.position.x + ') translateY(' + this.position.y + ') translateZ(0)');
+    };
 
-    })();
-  };
+    Sprite.prototype.rotate = function(delta) {
+      this.angle += delta;
+    };
 
-  var deps = {
-    'root': root,
-    'jquery': root.jQuery
-  };
+    Sprite.prototype.animate = function(property, target, easing, callback) {
 
-  var applyVals = (function(arr) {
-    var newArr = [];
+    };
 
-    for (var i = 0, j = arr.length; i < j; i++) {
-      newArr.push(deps[arr[i]]);
-    }
+    return Sprite;
 
-    return newArr;
-  })(Object.keys(deps));
+  })();
 
-  if ( typeof root.define === 'function') {
-    define('imp/sprite', Object.keys(deps), factory);
-  } else {
-    root.Imp = root.Imp || {};
-    root.Imp.Sprite = factory.apply(root, applyVals);
-  }
+  imp.Sprite = Sprite;
 
-})(this);
+  return Sprite;
+}); 
