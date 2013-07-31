@@ -1,26 +1,24 @@
 (function() {
   'use strict';
-  var hasModule, _ref;
-
-  Array.isArray || (Array.isArray = function(a) {
-    return a.push === Array.prototype.push && (a.length != null);
-  });
+  var hasModule;
 
   hasModule = (typeof module !== "undefined" && module !== null) && module.exports;
 
   (function(root) {
-    root.udefine = function(name, deps, factory) {
-      var dep, globalsArr, requireArr, result, _ref1, _ref2;
+    var _base, _base1, _base2;
 
-      if (Array.isArray(name)) {
-        _ref1 = [void 0, [], deps], name = _ref1[0], deps = _ref1[1], factory = _ref1[2];
-      } else {
-        if (typeof name === 'function') {
-          _ref2 = [void 0, [], name], name = _ref2[0], deps = _ref2[1], factory = _ref2[2];
-        }
+    root.udefine || (root.udefine = function(name, deps, factory) {
+      var dep, globalsArr, requireArr, result, _ref;
+
+      if (name == null) {
+        throw new Error('A udefine module needs to have a name');
+      }
+      if (typeof deps === 'function') {
+        _ref = [name, [], deps], name = _ref[0], deps = _ref[1], factory = _ref[2];
       }
       if (typeof define !== "undefined" && define !== null) {
         if (define.amd || define.umd) {
+          udefine.env.amd = true;
           result = define.apply(this, arguments);
         }
       } else {
@@ -35,6 +33,7 @@
             }
             return _results;
           })();
+          udefine.env.commonjs = true;
           result = module.exports = factory.apply(this);
         } else {
           globalsArr = (function() {
@@ -47,14 +46,21 @@
             }
             return _results;
           })();
+          udefine.env.browser = true;
           result = factory.apply(this, globalsArr);
         }
       }
       return result;
-    };
-    root.udefine.globals = {};
-    return root.udefine.node = {};
-  })((_ref = typeof module !== "undefined" && module !== null ? module.exports : void 0) != null ? _ref : this);
+    });
+    (_base = root.udefine).globals || (_base.globals = {});
+    (_base1 = root.udefine).commonjs || (_base1.commonjs = {});
+    (_base2 = root.udefine).env || (_base2.env = {
+      amd: false,
+      commonjs: false,
+      browser: false
+    });
+    return null;
+  })(hasModule ? global : this);
 
 }).call(this);
 
