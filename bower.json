@@ -1,0 +1,27 @@
+{
+  "name": "spriteimp",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Stoney-FD/spriteimp",
+  "authors": [
+    "Johannes Stein <johannesstein@freeze-dev.com>"
+  ],
+  "description": "Sprite animations and the like",
+  "main": "dist/spriteimp.js",
+  "keywords": [
+    "sprite",
+    "css",
+    "animation"
+  ],
+  "license": "UNLICENSE",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "udefine": "~0.7.1"
+  }
+}
