@@ -2,16 +2,13 @@
   
   root.udefine.globals.root = root;
   root.udefine.globals.jquery = root.jQuery;
-  root.udefine.globals.imp = (root.Imp = root.Imp || {});
-  
-  if (root.define != null) {
-    define('root', function() {
-      return root;
-    });
-    
-    define('imp', function() {
-      return {};
-    });
-  }
+  root.udefine.globals['imp/sprite'] = (function() {
+    root.Imp = root.Imp || {};
+    return root.Imp.Sprite;
+  })();
+  root.udefine.globals['imp/texture'] = (function() {
+    root.Imp = root.Imp || {};
+    return root.Imp.Texture;
+  })();
   
 })(this);
