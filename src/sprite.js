@@ -1,4 +1,4 @@
-udefine('imp/sprite', ['jquery', 'imp'], function($, imp) {
+udefine('imp/sprite', ['jquery'], function($) {
   var Sprite = (function() {
 
     var Sprite = function() {
@@ -37,8 +37,6 @@ udefine('imp/sprite', ['jquery', 'imp'], function($, imp) {
     return Sprite;
 
   })();
-
-  imp.Sprite = Sprite;
 
   return Sprite;
 }); 

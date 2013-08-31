@@ -1,4 +1,4 @@
-udefine('imp/texture', ['imp'], function(imp) {
+udefine('imp/texture', function() {
   var Texture = (function() {
     
     var Texture = function() {};
@@ -6,8 +6,6 @@ udefine('imp/texture', ['imp'], function(imp) {
     return Texture;
     
   })();
-  
-  imp.Texture = Texture;
   
   return Texture;
 });
